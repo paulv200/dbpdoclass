@@ -1,6 +1,6 @@
-# phppdodbclass
+# PHP pdo dbclass
 
-This is a simple db pdo class which also logs errors.  It is able to do SELECT, UPDATE, INSERT and DELETE statements with parameters entered into an arrray.
+This is a simple PHP db pdo class which also logs errors.  It is able to do SELECT, UPDATE, INSERT and DELETE statements with parameters entered into an arrray.
 
 
 ## Database configuration file.
