@@ -7,13 +7,13 @@ This is a simple PHP db pdo class which also logs errors.  It is able to do SELE
 
 You will require a config.php file in the same folder as the Dbpdo.class.php file.
 
-$dbhost 	= "localhost";				//usually localhost
+	$dbhost 	= "localhost";				//usually localhost
 
-$dbusername = "database-user-name";
+	$dbusername = "database-user-name";
 
-$dbpass 	= "database-password";"
+	$dbpass 	= "database-password";"
 
-$dbname		= "database-name";"
+	$dbname		= "database-name";"
 
 
 ## The files
