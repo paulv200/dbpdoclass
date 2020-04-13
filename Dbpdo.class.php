@@ -376,7 +376,7 @@ class DB
 	*	@param  boolean $logging
 	*	@return void
 	*/	
-		public function setdebug($debug) {
+		public function setlogging($debug) {
 			$this->logging = $logging;
 		}
 
