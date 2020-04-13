@@ -5,6 +5,9 @@
 $recid = 3;				//Example recid
 $publish = true;		//Example value for publish field
 
+//Set the debug and logging flag
+$db->setdebug(true);
+$db->setlogging(true);
 
 require_once("config.php");
 require_once("Dbpdo.class.php");

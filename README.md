@@ -45,6 +45,8 @@ logs folder is the location of any error logs that may be generated
 	$db = new Db();
 
 	//$db->setdebug(true);		//Use this to display some debug infomation
+
+	//$db->setlogging(true);	//Use this to allow debugging to the log text file
 	
 	$sql = "SELECT * FROM tblitems WHERE recid = :recid AND publish = :publish";
 
@@ -227,4 +229,9 @@ Run the testing.sql on a MysQL database to create a testing table, then use test
 Set a debug flag using:
 
 	$db->setdebug(true);
+
+Set a logging flag using
+
+	$db->setlogging(true);
+
 

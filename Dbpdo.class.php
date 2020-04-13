@@ -10,12 +10,13 @@ require("Log.class.php");
 class DB
 {
 
-	private $pdo;					# @object, The PDO object	
-	private $sQuery;				# @object, PDO statement object
-	private $bConnected = false;	# @bool ,  Connected to the database	
-	private $log;					# @object, Object for logging exceptions	
-	private $parameters;			# @array, The parameters of the SQL query
-	private $debug = false;			# Set to true to show debug info
+	private $pdo;					# @object, The PDO object.	
+	private $sQuery;				# @object, PDO statement object.
+	private $bConnected = false;	# @bool ,  Connected to the database.	
+	private $log;					# @object, Object for logging exceptions.	
+	private $parameters;			# @array, The parameters of the SQL query.
+	private $debug = false;			# Set to true to show debug info.
+	private $logging = false;		# Set to true to send log details to "logs" folder.
 		
     /***********************************************************
 	*   Default Constructor 
@@ -70,7 +71,9 @@ class DB
 			catch (PDOException $e) 
 			{
 				# Write into log
-				echo $this->ExceptionLog($e->getMessage());
+				if ($this->logging) {
+					echo $this->ExceptionLog($e->getMessage());
+				}
 				die();
 			}
 		}
@@ -135,10 +138,12 @@ class DB
 								break;
 								default:
 									# Write into log
-									echo $this->ExceptionLog("Error in parameters");
+									if ($this->logging) {
+										echo $this->ExceptionLog("Error in parameters");
+									}
 									die();
 								break;
-						}			
+						}	
 
 						if ($this->debug) {
 							echo("<strong>para0:</strong> " . $parameters[0] . " <strong>para1:</strong> " . $parameters[1] . " <strong>para2:</strong> " .$parameters[2] . " <strong>para3:</strong> " .$parameters[3] ."<br/>");
@@ -154,7 +159,9 @@ class DB
 			catch(PDOException $e)
 			{
 					# Write into log and display Exception
-					echo $this->ExceptionLog($e->getMessage(), $query );
+					if ($this->logging) {
+						echo $this->ExceptionLog($e->getMessage(), $query );
+					}
 					die();
 			}
 
@@ -192,8 +199,10 @@ class DB
 				$this->parameters[sizeof($this->parameters)] = ":" . $para . "\x7F" . $value .  "\x7F" . $type .  "\x7F" . $length;
 			}
 			else {
-				# Write into log				
-				echo $this->ExceptionLog("Error with type length in the array");
+				# Write into log
+				if ($this->logging) {
+					echo $this->ExceptionLog("Error with type length in the array");
+				}
 				die();
 			}
 
@@ -202,7 +211,6 @@ class DB
 			}
 
 		}
-
 
     /***********************************************************
 	*	@void
@@ -240,7 +248,9 @@ class DB
 								break;
 							default:
 								# Write into log
-								echo $this->ExceptionLog("Error in parameters");
+								if ($this->logging) {
+									echo $this->ExceptionLog("Error in parameters");
+								}
 								die();
 								break;
 						}	
@@ -357,6 +367,17 @@ class DB
 	*/	
 		public function setdebug($debug) {
 			$this->debug = $debug;
+		}
+
+
+   /***********************************************************
+	*	Sets the logging value to true or false - default is false
+	*
+	*	@param  boolean $logging
+	*	@return void
+	*/	
+		public function setdebug($debug) {
+			$this->logging = $logging;
 		}
 
     /***********************************************************

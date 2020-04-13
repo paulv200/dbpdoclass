@@ -11,8 +11,9 @@ require_once("Dbpdo.class.php");
 $db = new Db();
 echo("<br/>--------------------------------<br/>");
 
-//Set the debug flag
+//Set the debug and logging flag
 $db->setdebug(true);
+$db->setlogging(true);
 
 //Simple select on a table
 $sql = "SELECT * FROM tblitems";

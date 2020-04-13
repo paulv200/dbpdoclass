@@ -1,9 +1,8 @@
 <?php 
-       /* *
+    /* *
 	* Log 			A logger class which creates logs when an exception is thrown.
-	* @author		Author: Vivek Wicky Aswal. (https://twitter.com/#!/VivekWickyAswal)
-	* @git 			https://github.com/indieteq/PHP-MySQL-PDO-Database-Class
-	* @version      0.1a
+	*
+	*
 	*/
 	class Log {
 			
@@ -16,14 +15,14 @@
 				$this->path  = dirname(__FILE__)  . $this->path;	
 			}
 			
-		   /**
+		    /***********************************************************
 		    *   @void 
 		    *	Creates the log
 		    *
 		    *   @param string $message the message which is written into the log.
 		    *	@description:
 		    *	 1. Checks if directory exists, if not, create one and call this method again.
-	            *	 2. Checks if log already exists.
+	        *	 2. Checks if log already exists.
 		    *	 3. If not, new log gets created. Log is written into the logs folder.
 		    *	 4. Logname is current date(Year - Month - Day).
 		    *	 5. If log exists, edit method called.
@@ -50,9 +49,8 @@
  						 $this->write($message);  
 					  }	
 				}
-			 }
-			
-			/** 
+			 }			
+  		     /***********************************************************
 			 *  @void
 			 *  Gets called if log exists. 
 			 *  Modifies current log and adds the message to the log.
@@ -62,9 +60,9 @@
 			 * @param string $message
 			 */
 			    private function edit($log,$date,$message) {
-				$logcontent = "Time : " . $date->format('H:i:s')."\r\n" . $message ."\r\n\r\n";
-				$logcontent = $logcontent . file_get_contents($log);
-				file_put_contents($log, $logcontent);
+					$logcontent = "Time : " . $date->format('H:i:s')."\r\n" . $message ."\r\n\r\n";
+					$logcontent = $logcontent . file_get_contents($log);
+					file_put_contents($log, $logcontent);
 			    }
 		}
 ?>
